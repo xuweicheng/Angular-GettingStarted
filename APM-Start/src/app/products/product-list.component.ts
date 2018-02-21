@@ -45,14 +45,14 @@ export class ProductListComponent implements OnInit {
         }
     ];
 
-    constrctor() {
+    constructor() {
         this.filteredProducts = this.products;
         this.listFilter = 'cart';
     }
 
     performFilter(filterBy: string): IProduct[] {
         filterBy = filterBy.toLowerCase();
-        return this.products.filter((product: IProduct) => 
+        return this.products.filter((product: IProduct) =>
             product.productName.toLowerCase().indexOf(filterBy) !== -1);
     }
 
@@ -62,5 +62,9 @@ export class ProductListComponent implements OnInit {
 
     ngOnInit(): void {
         console.log('In OnInit');
-    }    
+    }
+
+    onRatingClicked(message: string): void {
+        this.pageTitle = 'Product List: ' + message;
+    }
 }
